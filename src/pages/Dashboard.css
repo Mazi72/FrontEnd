@@ -1,0 +1,63 @@
+/* Sfondo del calendario */
+.react-calendar {
+  background-color: #1e1e1e; /* colore scuro */
+  color: #f0f0f0; /* testo chiaro */
+  border: 1px solid #00bfa6;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+/* Header (mese e anno) */
+.react-calendar__navigation {
+  background-color: #121212;
+  color: #00bfa6;
+  border-bottom: 1px solid #00bfa6;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Bottoni di navigazione */
+.react-calendar__navigation button {
+  color: #00bfa6;
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.react-calendar__navigation button:hover {
+  color: #00fff7;
+}
+
+/* Giorni e numeri */
+.react-calendar__month-view__days__day,
+.react-calendar__tile {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border-radius: 6px;
+  padding: 0.5rem 0;
+  transition: background-color 0.3s;
+}
+
+/* Hover sulle celle */
+.react-calendar__tile:hover {
+  background-color: #00bfa6;
+  color: #121212;
+}
+
+/* Giorno selezionato */
+.react-calendar__tile--active {
+  background-color: #00bfa6 !important;
+  color: #121212 !important;
+  border-radius: 6px;
+}
+
+/* Giorni fuori mese (dimmed) */
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #555;
+}
+
+/* Eventuale checkmark o contenuti aggiuntivi */
+.react-calendar__tile > div {
+  color: #00bfa6;
+}

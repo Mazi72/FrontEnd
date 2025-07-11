@@ -1,0 +1,73 @@
+{
+  "allenamento": [
+    {
+      "id": 1,
+      "userId": 1,
+      "date": "2025-07-08",
+      "type": "Push",
+      "exercises": [
+        {
+          "name": "Panca Piana",
+          "sets": 4,
+          "reps": 10,
+          "weight": 80
+        },
+        {
+          "name": "Spinte Manubri",
+          "sets": 3,
+          "reps": 12,
+          "weight": 26
+        }
+      ]
+    }
+  ],
+  "metriche": [
+    {
+      "id": 1,
+      "userId": 1,
+      "date": "2025-07-08",
+      "weight": 75.2,
+      "bodyFat": 14.5,
+      "muscleMass": 36.8
+    }
+  ],
+  "note": [
+    {
+      "id": 1,
+      "userId": 1,
+      "author": "coach01",
+      "date": "2025-07-08",
+      "content": "Buon lavoro oggi. Cura di più l’esecuzione sulle spinte."
+    }
+  ],
+  "progressioni": [
+    {
+      "id": 1,
+      "userId": 1,
+      "exercise": "Panca Piana",
+      "entries": [
+        {
+          "date": "2025-06-15",
+          "weight": 70,
+          "reps": 10
+        },
+        {
+          "date": "2025-07-01",
+          "weight": 80,
+          "reps": 8
+        }
+      ]
+    }
+  ],
+  "profilo": [
+    {
+      "id": 1,
+      "username": "atleta01",
+      "nome": "Marco",
+      "cognome": "Rossi",
+      "età": 28,
+      "altezza": 180,
+      "pesoIniziale": 72
+    }
+  ]
+}

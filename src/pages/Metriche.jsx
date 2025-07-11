@@ -1,3 +1,6 @@
+// Metriche per il monitoraggio delle condizioni fisiche a cura dell'atleta che dovrà compilare i campi
+// e del coach che potrà visualizzare i dati storici
+
 import { useState, useEffect } from 'react';
 import {
   Line
@@ -47,7 +50,7 @@ function Metriche() {
     if (dati) setDatiStorici(dati);
   }, []);
 
-  // Quando cambia la data selezionata, carico i valori di quella data
+  // Quando cambia la data selezionata, carica i valori di quella data
   useEffect(() => {
     const record = datiStorici.find(r => r.data === dataInserimento);
     if (record) {
@@ -69,14 +72,14 @@ function Metriche() {
     const indiceData = nuoviDati.findIndex(r => r.data === dataInserimento);
 
     if (indiceData !== -1) {
-      // Aggiorno il record esistente
+      // Aggiorna il record esistente
       nuoviDati[indiceData] = { data: dataInserimento, misure: { ...valori } };
     } else {
-      // Aggiungo nuovo record
+      // Aggiunge nuovo record
       nuoviDati.push({ data: dataInserimento, misure: { ...valori } });
-      // Ordino per data
+      // Ordina per data
       nuoviDati.sort((a, b) => a.data.localeCompare(b.data));
-      // Se supero 5 elementi, elimino il più vecchio
+      // Se supera 5 elementi, elimino il più vecchio
       if (nuoviDati.length > 5) {
         nuoviDati.shift();
       }

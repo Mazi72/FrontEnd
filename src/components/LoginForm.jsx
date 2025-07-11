@@ -3,14 +3,23 @@ import { useState } from 'react';
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState('');
   const [role, setRole] = useState('atleta'); // ruolo di default
+  const [error, setError] = useState(''); // stato per errore
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => {// Gestione invio del form
     e.preventDefault();
-    if (username.trim() !== '') {
-      onLogin({ username, role });
-    }
-  };
 
+    // Validazione: username non vuoto
+    if (username.trim() === '') {
+      setError('Il nome è obbligatorio');
+      return;
+    }
+
+    // Validazione: ruolo selezionato
+    setError(''); // reset errore
+    onLogin({ username, role });
+  };
+  
+  // Render del form di login
   return (
     <form 
       onSubmit={handleSubmit} 
@@ -38,16 +47,17 @@ function LoginForm({ onLogin }) {
         style={{
           padding: '0.7rem 1rem',
           borderRadius: '8px',
-          border: '2px solid #00bfa6',
+          border: `2px solid ${error ? '#ff4d4d' : '#00bfa6'}`, // bordo rosso se errore
           backgroundColor: '#1e1e1e',
           color: '#f0f0f0',
           fontSize: '1rem',
           outline: 'none',
           transition: 'border-color 0.3s',
         }}
-        onFocus={e => e.target.style.borderColor = '#00fff7'}
-        onBlur={e => e.target.style.borderColor = '#00bfa6'}
+        onFocus={e => e.target.style.borderColor = error ? '#ff9999' : '#00fff7'}
+        onBlur={e => e.target.style.borderColor = error ? '#ff4d4d' : '#00bfa6'}
       />
+      {error && <p style={{ color: '#ff4d4d', marginTop: '-1rem' }}>{error}</p>}
 
       <label style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', fontWeight: 'bold' }}>
         Ruolo:

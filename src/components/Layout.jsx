@@ -13,6 +13,8 @@ function Layout() {
           <Link to="/progressioni" style={styles.link}>Progressioni</Link>
           <Link to="/metriche" style={styles.link}>Metriche</Link>
           <Link to="/profilo" style={styles.link}>Profilo</Link>
+          <Link to="/dashboard" style={styles.link}>Dashboard</Link>
+          <Link to="/market" style={styles.link}>Market</Link>
           <Link to="/note" style={styles.link}>Note</Link>
         </nav>
       </header>
@@ -24,7 +26,7 @@ function Layout() {
   );
 }
 
-const styles = {
+const styles = {// Define styles for the layout
   container: {
     backgroundColor: '#121212',
     minHeight: '100vh',

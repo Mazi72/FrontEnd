@@ -1,3 +1,5 @@
+// Profilo per i dati anagrafici dell'utente
+
 import React, { useState, useEffect } from 'react';
 
 function Profilo() {
@@ -6,7 +8,7 @@ function Profilo() {
   const [cognome, setCognome] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
-  const [foto, setFoto] = useState(null); // base64 della foto
+  const [foto, setFoto] = useState(null); // base della foto
 
   // Carica i dati da localStorage all’avvio
   useEffect(() => {

@@ -1,3 +1,5 @@
+//Pagina per la gestione delle note personali degli utenti
+
 import { useState } from 'react';
 
 function Note() {

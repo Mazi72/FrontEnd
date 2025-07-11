@@ -1,3 +1,5 @@
+//Progressioni per il monitoraggio dei progressi fisici degli atleti attraverso foto settimanali
+
 import { useState, useEffect } from 'react';
 
 function Progressioni({ utente }) {

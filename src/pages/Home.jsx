@@ -1,3 +1,5 @@
+// Home page con saluto personalizzato e link di navigazione
+
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -5,17 +7,23 @@ function Home({ utente, onLogout }) {
   const [greeting, setGreeting] = useState('Ciao');
   const location = useLocation();
 
-  // Per evidenziare la card attiva
+  // Stato per il link attivo
   const [activeLink, setActiveLink] = useState(location.pathname);
 
   useEffect(() => {
+    // Imposta il saluto in base all'ora
     const hour = new Date().getHours();
     if (hour < 12) setGreeting('Buongiorno');
     else if (hour < 18) setGreeting('Buon pomeriggio');
     else setGreeting('Buonasera');
   }, []);
 
-  // Effetto fade-in
+  // Aggiorna il link attivo quando cambia il percorso
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location.pathname]);
+
+  // Effetto fade-in per animazione iniziale
   const [fadeIn, setFadeIn] = useState(false);
   useEffect(() => {
     setFadeIn(true);
@@ -23,12 +31,15 @@ function Home({ utente, onLogout }) {
 
   if (!utente) return null;
 
+  // Lista dei link (aggiunto Market)
   const links = [
+    { to: '/dashboard', label: 'Dashboard' },
     { to: '/allenamento', label: 'Allenamento' },
     { to: '/progressioni', label: 'Progressioni' },
     { to: '/metriche', label: 'Metriche' },
     { to: '/profilo', label: 'Profilo' },
     { to: '/note', label: 'Note' },
+    { to: '/market', label: 'Market' }, // ← Aggiunto il Market
   ];
 
   return (
@@ -69,36 +80,37 @@ function Home({ utente, onLogout }) {
               transition: 'all 0.3s ease',
             }}
             onMouseDown={e => (e.currentTarget.style.transform = 'scale(0.95)')}
-            onMouseUp={e => (e.currentTarget.style.transform = activeLink === to ? 'scale(1.05)' : 'scale(1)')}
-            onMouseLeave={e => (e.currentTarget.style.transform = activeLink === to ? 'scale(1.05)' : 'scale(1)')}
+            onMouseUp={e =>
+              (e.currentTarget.style.transform =
+                activeLink === to ? 'scale(1.05)' : 'scale(1)')
+            }
+            onMouseLeave={e =>
+              (e.currentTarget.style.transform =
+                activeLink === to ? 'scale(1.05)' : 'scale(1)')
+            }
           >
             {label}
           </Link>
         ))}
 
-      <button
-        onClick={onLogout}
-        style={{
-          backgroundColor: '#00bfa6',
-          border: 'none',
-          padding: '0.75rem 1.5rem',
-          borderRadius: '8px',
-          color: '#121212',
-          fontWeight: 'bold',
-          cursor: 'pointer',
-          boxShadow: '0 0 10px #00bfa6',
-          transition: 'box-shadow 0.3s ease-in-out',
-        }}
-        onMouseEnter={e =>
-          (e.currentTarget.style.boxShadow = '0 0 20px #00ffd0')
-        }
-        onMouseLeave={e =>
-          (e.currentTarget.style.boxShadow = '0 0 10px #00bfa6')
-        }
-      >
-        Logout
-      </button>
-
+        <button
+          onClick={onLogout}
+          style={{
+            backgroundColor: '#00bfa6',
+            border: 'none',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '8px',
+            color: '#121212',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            boxShadow: '0 0 10px #00bfa6',
+            transition: 'box-shadow 0.3s ease-in-out',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 20px #00ffd0')}
+          onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 10px #00bfa6')}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
